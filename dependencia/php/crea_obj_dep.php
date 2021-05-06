@@ -23,8 +23,26 @@ switch ($_GET['accion']) {
 
     case 'queryinv':
         $dep= new Dependencias();
-        $resul=$dep->EditarDependencias($_GET['id']);
+        $resul=$dep->ConsultarDependencia($_GET['id']);
         echo $resul;
+        break;
+
+    case 'update':
+        if (isset($_GET['nombre'])) {
+            $dep= new Dependencias();
+            $resul= $dep->actualizarDependencia($_GET['id'],$_GET['nombre']);
+            echo $resul;
+        } else {
+            echo "No hay datos";
+        }
+        break;
+
+    case 'delete':
+        if (isset($_GET['id'])) {
+            $dep=new Dependencias();
+            $resul=$dep->deleteDependencia($_GET['id']);
+            echo $resul;
+        }
         break;
     
     default:

@@ -3,8 +3,8 @@
 /* Clase que conecta una base de datos  postgresql */
 $host="localhost";
 $user="postgres";
-$password="Sandra1986**";
-$database="Solti";
+$password="Sistemas2020**";
+$database="solti3";
 $port="5432";
 
 
@@ -13,8 +13,8 @@ class conexion{
     
     private $host="localhost";
     private $user="postgres";
-    private $password="Sandra1986**";
-    private $database="Solti";
+    private $password="Sistemas2020**";
+    private $database="solti3";
     private $port="5432";
 
     public function conectar()

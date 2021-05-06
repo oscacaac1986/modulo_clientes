@@ -39,24 +39,49 @@ class Dependencias{
         
     }
 
-    public function EditarDependencias($a)
+    public function ConsultarDependencia($a)
     {
         
         $obj_conne=new conexion();
         $conn= $obj_conne->conectar();
         $query="select * from dependencias where iddependencia=".$a;
         $resul=pg_query($conn,$query);
-        /* $dprocesa = pg_fetch_all($resul); */
         $dprocesa = pg_fetch_all($resul, PGSQL_ASSOC);
         $datos=json_encode($dprocesa,JSON_UNESCAPED_UNICODE);
         return  $datos;
     }
 
+    public function actualizarDependencia($a,$b)    
+    {
+        $id=$a;
+        $nombre=$b;
+        $obj_conne=new conexion();
+        $conn= $obj_conne->conectar();
+        $query="UPDATE dependencias  SET dependencia='".$nombre."' WHERE iddependencia=".$id;
+        $resul =pg_query($conn,$query);
+        if ($resul) {
+            return 1;
+        } else {
+            return 0;
+        };
+    }
+
+    public function deleteDependencia($a)
+    {
+        $id=$a;
+        $obj_conne=new conexion();
+        $conn= $obj_conne->conectar();
+        $query="DELETE FROM dependencias WHERE iddependencia=".$id;
+        $resul =pg_query($conn,$query);
+        if ($resul) {
+            return 1;
+        } else {
+            return 0;
+        };
+    }
+
     
 }
-
-
-
 
 
 ?>
